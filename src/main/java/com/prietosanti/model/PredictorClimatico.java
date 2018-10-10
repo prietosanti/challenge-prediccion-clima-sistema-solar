@@ -33,32 +33,28 @@ public class PredictorClimatico {
                 }
             } else {
                 if (sistemaSolar.solEnElInteriorDelTriangulo()) {
-                    predecirTipoDeLLuvia(diasDeLLuviaACorregir, diaActual);
+                    predecirTipoDeLluvia(diasDeLLuviaACorregir, diaActual);
                 } else {
                     climas.add(ClimaModel.of(diaActual, TipoClima.DESPEJADO));
                 }
             }
         }
+        corregirClimasConTipoClima(diasDeLLuviaACorregir, TipoClima.LLUVIA_INTENSA);
 
         return climas;
     }
 
-    private void predecirTipoDeLLuvia(List<Integer> diasDeLLuviaACorregir, int diaActual) {
-        // Calculo el perimetro mayor
+    private void predecirTipoDeLluvia(List<Integer> diasDeLLuviaACorregir, int diaActual) {
+        climas.add(diaActual, ClimaModel.of(diaActual, TipoClima.LLUVIA));
         double perimetroTriangulo = sistemaSolar.getPerimetroFormadoPorLosPlanetas();
 
         if(Double.compare(perimetroTriangulo, mayorPerimetro) == 0 ) {
             diasDeLLuviaACorregir.add(diaActual);
-            climas.add(diaActual, ClimaModel.of(diaActual, TipoClima.LLUVIA_INTENSA));
         }
         if (Double.compare(perimetroTriangulo, mayorPerimetro) > 0) {
             mayorPerimetro = perimetroTriangulo;
-            corregirClimasConTipoClima(diasDeLLuviaACorregir, TipoClima.LLUVIA);
             diasDeLLuviaACorregir.clear();
             diasDeLLuviaACorregir.add(diaActual);
-            climas.add(diaActual, ClimaModel.of(diaActual, TipoClima.LLUVIA_INTENSA));
-        } else {
-            climas.add(diaActual, ClimaModel.of(diaActual, TipoClima.LLUVIA));
         }
     }
 
