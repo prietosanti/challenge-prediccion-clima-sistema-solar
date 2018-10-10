@@ -11,13 +11,13 @@ public class CalulosTrigonometricosTest {
     private Punto puntoCentral = new Punto(0, 0);
 
     @Test
-    public void test1_DebeRetornarElValorDeLaPendienteQuePasaPorDosPuntos() {
+    public void test1_debeRetornarElValorDeLaPendienteQuePasaPorDosPuntos() {
         assertEquals(1, CalulosTrigonometricos.pendienteQuePasaPorDosPuntos(new Punto(2.0, 2.0), new Punto(-1, -1)), 0.001);
         assertEquals(Double.POSITIVE_INFINITY, CalulosTrigonometricos.pendienteQuePasaPorDosPuntos(new Punto(2.0, 2.0), new Punto(2, -1)), 0.001);
     }
 
     @Test
-    public void test2_DebeRetornarElValorDeLaOrdenadaParaUnPuntoYPendiente() {
+    public void test2_debeRetornarElValorDeLaOrdenadaParaUnPuntoYPendiente() {
         Punto punto1 = new Punto(-2, 0);
         Punto punto2 = new Punto(1, 3);
 
