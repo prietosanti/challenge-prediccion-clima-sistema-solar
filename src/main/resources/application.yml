@@ -1,0 +1,25 @@
+spring:
+  h2:
+    console:
+      enabled: true # Sólo para entornos de desarrollo. No usar en producción
+      path: /h2 # Acceso a la base a través de http://localhost:8080/h2
+  datasource:
+    url: jdbc:h2:mem:/predicciondb
+    username: user
+    password: secret
+    driver-class-name: org.h2.Driver
+  jpa:
+    show-sql: false # Muestro sql en pantalla a medida que se hacen las consultas
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        # Pretty-print JSON responses
+  jackson:
+    serialization:
+      indent_output: true
+
+#app:
+#  values:
+#    tolerancia: 50
