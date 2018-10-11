@@ -7,7 +7,6 @@ import com.prietosanti.model.PredictorClimatico;
 import com.prietosanti.model.TipoClima;
 import com.prietosanti.repository.PrediccionClimaticaRepository;
 import com.prietosanti.service.PrediccionClimaticaService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
@@ -16,17 +15,22 @@ import java.util.List;
 @Service("prediccionClimaticaServiceImpl")
 public class PrediccionClimaticaServiceImpl implements PrediccionClimaticaService {
 
-    @Autowired
-    @Qualifier("prediccionClimaticaRepository")
-    private PrediccionClimaticaRepository prediccionClimaticaRepository;
+    private final PrediccionClimaticaRepository prediccionClimaticaRepository;
 
-    @Autowired
-    @Qualifier("climaConverter")
-    private ClimaConverter climaConverter;
+    private final ClimaConverter climaConverter;
 
-    @Autowired
-    @Qualifier("predictorClimatico")
-    private PredictorClimatico predictorClimatico;
+    private final PredictorClimatico predictorClimatico;
+
+    public PrediccionClimaticaServiceImpl(
+            @Qualifier("prediccionClimaticaRepository") PrediccionClimaticaRepository prediccionClimaticaRepository,
+            @Qualifier("climaConverter") ClimaConverter climaConverter,
+            @Qualifier("predictorClimatico") PredictorClimatico predictorClimatico
+    )
+    {
+        this.prediccionClimaticaRepository = prediccionClimaticaRepository;
+        this.climaConverter = climaConverter;
+        this.predictorClimatico = predictorClimatico;
+    }
 
     @Override
     public ClimaModel consultarClimaPorDia(int dia) {

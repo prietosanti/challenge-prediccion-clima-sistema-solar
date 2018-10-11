@@ -16,28 +16,30 @@ import java.util.List;
 @RestController
 public class PrediccionClimaticaController {
 
-    @Autowired
-    @Qualifier("prediccionClimaticaServiceImpl")
-    private PrediccionClimaticaService prediccionClimaticaService;
+    private final PrediccionClimaticaService prediccionClimaticaService;
+
+    public PrediccionClimaticaController(@Qualifier("prediccionClimaticaServiceImpl") PrediccionClimaticaService prediccionClimaticaService) {
+        this.prediccionClimaticaService = prediccionClimaticaService;
+    }
 
     @GetMapping("/clima")
-    public ResponseEntity getClimaDeUnDia(@RequestParam(value = "dia", required = true) int dia) {
+    public ResponseEntity getClimaDeUnDia(@RequestParam(value = "dia") int dia) {
         boolean diaValido = dia >= 0 && dia <= (365 * 10);
         if(diaValido) {
             return new ResponseEntity<>(prediccionClimaticaService.consultarClimaPorDia(dia), HttpStatus.OK);
         } else {
             return ResponseEntity
-                    .status(HttpStatus.OK)
+                    .status(HttpStatus.BAD_REQUEST)
                     .body("El día consultado debe estar comprendido entre 1 y 3650");
         }
     }
 
     @GetMapping("/climas/tipo")
-    public ResponseEntity<List<ClimaModel>> getClimasPorTipo(@RequestParam(value = "tipoClima", required = true) String tipoClima) {
+    public ResponseEntity<List<ClimaModel>> getClimasPorTipo(@RequestParam(value = "tipoClima") String tipoClima) {
         try {
             return new ResponseEntity<>(prediccionClimaticaService.consultarDiasPorTipoClima(TipoClima.valueOf(tipoClima)), HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity("Los tipos de clima válidos son: " + TipoClima.getTiposDeClima(), HttpStatus.OK);
+            return new ResponseEntity("Los tipos de clima válidos son: " + TipoClima.getTiposDeClima(), HttpStatus.BAD_REQUEST);
         }
     }
 

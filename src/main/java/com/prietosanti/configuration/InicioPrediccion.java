@@ -3,7 +3,6 @@ package com.prietosanti.configuration;
 import com.prietosanti.service.PrediccionClimaticaService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
@@ -12,11 +11,12 @@ import javax.annotation.PostConstruct;
 @Component
 public class InicioPrediccion {
 
-    public static final Log LOGGER = LogFactory.getLog(InicioPrediccion.class);
-
-    @Autowired
-    @Qualifier("prediccionClimaticaServiceImpl")
+    private static final Log LOGGER = LogFactory.getLog(InicioPrediccion.class);
     private PrediccionClimaticaService prediccionClimaticaService;
+
+    public InicioPrediccion(@Qualifier("prediccionClimaticaServiceImpl") PrediccionClimaticaService prediccionClimaticaService) {
+        this.prediccionClimaticaService = prediccionClimaticaService;
+    }
 
     @PostConstruct
     public void predecirClimas() {

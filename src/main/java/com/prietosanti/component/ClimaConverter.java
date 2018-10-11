@@ -31,7 +31,7 @@ public class ClimaConverter {
     public List<ClimaModel> toModelList(List<Clima> climas) {
         return climas
                 .stream()
-                .map(clima -> toModel(clima))
+                .map(this::toModel)
                 .collect(Collectors.toList());
     }
 
@@ -39,7 +39,7 @@ public class ClimaConverter {
     public List<Clima> toEntityList(List<ClimaModel> climasModel) {
         return climasModel
                 .stream()
-                .map(climaModel -> toEntity(climaModel))
+                .map(this::toEntity)
                 .collect(Collectors.toList());
     }
 

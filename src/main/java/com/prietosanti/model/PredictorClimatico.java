@@ -5,7 +5,7 @@ import java.util.List;
 
 public class PredictorClimatico {
 
-    public static final int DIAS_POR_ANIO = 365;
+    private static final int DIAS_POR_ANIO = 365;
 
     private final SistemaSolar sistemaSolar;
     private List<ClimaModel> climas = new ArrayList<>();
@@ -39,7 +39,7 @@ public class PredictorClimatico {
                 }
             }
         }
-        corregirClimasConTipoClima(diasDeLLuviaACorregir, TipoClima.LLUVIA_INTENSA);
+        corregirDiasDeLluviaIntensa(diasDeLLuviaACorregir);
 
         return climas;
     }
@@ -58,9 +58,9 @@ public class PredictorClimatico {
         }
     }
 
-    private void corregirClimasConTipoClima(List<Integer> posiblesDiasACorregir, TipoClima tipoClima) {
+    private void corregirDiasDeLluviaIntensa(List<Integer> posiblesDiasACorregir) {
         posiblesDiasACorregir
                 .stream()
-                .forEach(diaACorregir -> climas.set(diaACorregir, ClimaModel.of(diaACorregir, tipoClima)));
+                .forEach(diaACorregir -> climas.set(diaACorregir, ClimaModel.of(diaACorregir, TipoClima.LLUVIA_INTENSA)));
     }
 }

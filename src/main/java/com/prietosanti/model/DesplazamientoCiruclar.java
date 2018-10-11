@@ -5,7 +5,7 @@ public class DesplazamientoCiruclar implements TipoDesplazamiento {
     public enum Sentido {
         HORARIO,
         ANTIHORARIO
-    };
+    }
 
     private double gradosPorDia;
     private Sentido sentido;
