@@ -1,10 +1,13 @@
 package com.prietosanti.model;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class PredictorClimatico {
-    
+
     private static final int DIAS_POR_ANIO = 365;
 
     private final SistemaSolar sistemaSolar;

@@ -26,8 +26,4 @@ public class Punto {
                 '}';
     }
 
-    public String toStringPunto() {
-        return "(" + x +", " + y + ")";
-    }
-
 }
