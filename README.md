@@ -13,6 +13,63 @@ Predice por día, y hasta 10 años, los diferentes climas que atraviesan 3 plane
 - H2
 - IntelliJ
 
+## Estructura del proyecto
+```
+challenge-prediccion-clima-sistema-solar
+    ├── README.md
+    ├── pom.xml
+    └── src
+        ├── main
+        │   ├── appengine
+        │   │   └── app.yaml
+        │   ├── java
+        │   │   └── com
+        │   │       └── prietosanti
+        │   │           ├── PrediccionClimaSistemaSolarApplication.java
+        │   │           ├── ServletInitializer.java
+        │   │           ├── component
+        │   │           │   └── ClimaConverter.java
+        │   │           ├── configuration
+        │   │           │   ├── InicioPrediccion.java
+        │   │           │   └── PredictorConfiguration.java
+        │   │           ├── controller
+        │   │           │   └── PrediccionClimaticaController.java
+        │   │           ├── entity
+        │   │           │   └── Clima.java
+        │   │           ├── model
+        │   │           │   ├── ClimaModel.java
+        │   │           │   ├── DesplazamientoCiruclar.java
+        │   │           │   ├── ObjetoOrbitable.java
+        │   │           │   ├── Planeta.java
+        │   │           │   ├── PredictorClimatico.java
+        │   │           │   ├── Punto.java
+        │   │           │   ├── SistemaSolar.java
+        │   │           │   ├── Sol.java
+        │   │           │   ├── TipoClima.java
+        │   │           │   └── TipoDesplazamiento.java
+        │   │           ├── repository
+        │   │           │   └── PrediccionClimaticaRepository.java
+        │   │           ├── service
+        │   │           │   ├── PrediccionClimaticaService.java
+        │   │           │   └── impl
+        │   │           │       └── PrediccionClimaticaServiceImpl.java
+        │   │           └── util
+        │   │               └── CalulosTrigonometricos.java
+        │   ├── resources
+        │   │   └── application.yml
+        │   └── webapp
+        │       └── WEB-INF
+        │           └── appengine-web.xml
+        └── test
+            └── java
+                └── com
+                    └── prietosanti
+                        └── model
+                            ├── CalulosTrigonometricosTest.java
+                            ├── PlanetaTest.java
+                            └── PuntoTest.java
+```
+
 ## Condiciones de Diseño
 Debido a la precisión decimal, por ser un punto flotante, del valor en X e Y que se genera para cada planeta en un día determinado, se redondeó el valor devuelto para que tenga 1 sólo decimal. Por ejemplo, una posición que genere un nuevo punto `P(6.25342, 9.243415)` será  devuelto como `P(6.3, 6.2)`
 
