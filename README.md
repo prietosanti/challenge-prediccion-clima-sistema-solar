@@ -117,7 +117,7 @@ Para desplegar en Google App Engine
 y se accede mediante `https://climaservice-219008.appspot.com`
 
 ## Acceso a los recursos
-### Informe de de cantidad de períodos de cada tipo de clima
+### Informe de cantidad de períodos de cada tipo de clima
 https://climaservice-219008.appspot.com/informe
 ```
 {
