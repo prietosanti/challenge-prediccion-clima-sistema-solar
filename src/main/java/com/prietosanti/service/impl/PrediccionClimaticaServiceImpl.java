@@ -3,6 +3,7 @@ package com.prietosanti.service.impl;
 import com.prietosanti.component.ClimaConverter;
 import com.prietosanti.entity.Clima;
 import com.prietosanti.model.ClimaModel;
+import com.prietosanti.model.InformeModel;
 import com.prietosanti.model.PredictorClimatico;
 import com.prietosanti.model.TipoClima;
 import com.prietosanti.repository.PrediccionClimaticaRepository;
@@ -10,6 +11,7 @@ import com.prietosanti.service.PrediccionClimaticaService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.EnumMap;
 import java.util.List;
 
 @Service("prediccionClimaticaServiceImpl")
@@ -48,6 +50,22 @@ public class PrediccionClimaticaServiceImpl implements PrediccionClimaticaServic
     public List<ClimaModel> consultarDiasPorTipoClima(TipoClima tipoClima) {
         List<Clima> climasPorTipoClima = prediccionClimaticaRepository.findAllByTipoClima(tipoClima);
         return climaConverter.toModelList(climasPorTipoClima);
+    }
+
+    @Override
+    public long consultarPeriodosPorClima(TipoClima tipoClima) {
+        return prediccionClimaticaRepository.countByTipoClima(tipoClima);
+    }
+
+    public InformeModel informeDePredicciones() {
+        EnumMap<TipoClima, Long> periodosPorClima = new EnumMap<>(TipoClima.class);
+
+        for (TipoClima tipoClima : TipoClima.values()) {
+            long cantidad = consultarPeriodosPorClima(tipoClima);
+            periodosPorClima.put(tipoClima, cantidad);
+        }
+
+        return InformeModel.of(periodosPorClima);
     }
 
     @Override

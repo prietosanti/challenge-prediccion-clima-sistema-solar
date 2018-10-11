@@ -38,4 +38,7 @@ public class SistemaSolar {
         return CalulosTrigonometricos.perimetroTriangulo(planeta1.posicion(), planeta2.posicion(), planeta3.posicion());
     }
 
+    public String getPosicionesDePlanetas() {
+        return planeta1.posicion().toStringPunto() + "," + planeta2.posicion().toStringPunto() + "," + planeta3.posicion().toStringPunto();
+    }
 }

@@ -1,6 +1,7 @@
 package com.prietosanti.controller;
 
 import com.prietosanti.model.ClimaModel;
+import com.prietosanti.model.InformeModel;
 import com.prietosanti.model.TipoClima;
 import com.prietosanti.service.PrediccionClimaticaService;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -51,6 +52,11 @@ public class PrediccionClimaticaController {
     @GetMapping("/climas")
     public ResponseEntity<List<ClimaModel>> listarClimas() {
         return new ResponseEntity<>(prediccionClimaticaService.listarTodos(), HttpStatus.OK);
+    }
+
+    @GetMapping("/informe")
+    public ResponseEntity<InformeModel> informeGeneral() {
+        return new ResponseEntity<>(prediccionClimaticaService.informeDePredicciones(), HttpStatus.OK);
     }
 
 }

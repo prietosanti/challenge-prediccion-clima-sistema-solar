@@ -13,4 +13,5 @@ public interface PrediccionClimaticaRepository extends JpaRepository<Clima, Seri
 
     Clima findByDia(int dia);
     List<Clima> findAllByTipoClima(TipoClima tipoClima);
+    long countByTipoClima(TipoClima tipoClima);
 }

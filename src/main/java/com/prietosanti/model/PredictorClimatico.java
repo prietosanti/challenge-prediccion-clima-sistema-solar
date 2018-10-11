@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PredictorClimatico {
-
+    
     private static final int DIAS_POR_ANIO = 365;
 
     private final SistemaSolar sistemaSolar;
