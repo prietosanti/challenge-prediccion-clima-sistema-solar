@@ -3,15 +3,14 @@ package com.prietosanti.controller;
 import com.prietosanti.model.ClimaModel;
 import com.prietosanti.model.TipoClima;
 import com.prietosanti.service.PrediccionClimaticaService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -23,10 +22,10 @@ public class PrediccionClimaticaController {
         this.prediccionClimaticaService = prediccionClimaticaService;
     }
 
-    @GetMapping("/climas/dia/{dia}")
+    @GetMapping("/climas/dias/{dia}")
     public ResponseEntity getClimaDeUnDia(@PathVariable(value = "dia") int dia) {
         boolean diaValido = dia >= 0 && dia <= (365 * 10);
-        if(diaValido) {
+        if (diaValido) {
             return new ResponseEntity<>(prediccionClimaticaService.consultarClimaPorDia(dia), HttpStatus.OK);
         } else {
             return ResponseEntity
@@ -35,13 +34,18 @@ public class PrediccionClimaticaController {
         }
     }
 
-    @GetMapping("/climas/tipo/{tipo}")
+    @GetMapping("/climas/tipos/{tipo}")
     public ResponseEntity<List<ClimaModel>> getClimasPorTipo(@PathVariable(value = "tipo") String tipoClima) {
         try {
             return new ResponseEntity<>(prediccionClimaticaService.consultarDiasPorTipoClima(TipoClima.valueOf(tipoClima)), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity("Los tipos de clima válidos son: " + TipoClima.getTiposDeClima(), HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @GetMapping("/climas/tipos")
+    public ResponseEntity<ArrayList<String>> getClimasPorTipo() {
+        return new ResponseEntity<>(TipoClima.getTiposDeClima(), HttpStatus.OK);
     }
 
     @GetMapping("/climas")
