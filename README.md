@@ -7,6 +7,7 @@ Predice por día, y hasta 10 años, los diferentes climas que atraviesan 3 plane
 - Spring Framwork 5.0.9
 - Maven 3.5.2
 - Java 8
+- Rest
 - Google App Engine
 - Hibernate 5.2.17
 - H2
@@ -14,7 +15,9 @@ Predice por día, y hasta 10 años, los diferentes climas que atraviesan 3 plane
 
 ## Condiciones de Diseño
 Debido a la precisión decimal, por ser un punto flotante, del valor en X e Y que se genera para cada planeta en un día determinado, se redondeó el valor devuelto para que tenga 1 sólo decimal. Por ejemplo, una posición que genere un nuevo punto `P(6.25342, 9.243415)` será  devuelto como `P(6.3, 6.2)`
+
 La alineación de los planetas se calcula utilizando la ecuación de la recta que pasa por 2 puntos.
+
 ### Tolerancia de Error
 La tolerancia de error permite que la alineación de los planetas sea más o menos precisa. Así, una tolerancia de error de **0%** sólo reconocerá como alineados a los planetas cuya posición se encuentre exactamente en la misma recta que los demás planetas.
 Una mayor tolerancia permitirá que la recta que une 3 planetas, con o sin el centro, sea menos exacta.
