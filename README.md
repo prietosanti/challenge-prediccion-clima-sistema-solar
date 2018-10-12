@@ -95,12 +95,12 @@ Cuando los 3 planetas están alineados entre sí pero no con el Sol
 ### Periodo de Lluvia
 Cuando el Sol está contenido dentro del triángulo que forman los 3 planetas y su perímetro no es máximo
 
-<img width="432" alt="lluvia" src="https://user-images.githubusercontent.com/5465152/46789644-53467800-cd13-11e8-9c58-79e597e1626e.png">
+<img width="432" alt="lluvia" src="https://user-images.githubusercontent.com/5465152/46881521-2d5bc900-ce22-11e8-90ab-f0e597ff99f6.png">
 
 ### Periodo de Lluvia Intensa
 Cuando el Sol está contenido dentro del triángulo que forman los 3 planetas y su perímetro es máximo
 
-<img width="432" alt="lluvia_intensa" src="https://user-images.githubusercontent.com/5465152/46789635-4e81c400-cd13-11e8-9cda-ae1173465054.png">
+<img width="432" alt="lluvia_intensa" src="https://user-images.githubusercontent.com/5465152/46881525-30ef5000-ce22-11e8-9775-90fdacd15c69.png">
 
 ### Despejado o Nada
 Cuando el Sol no está contenido dentro del triángulo que forman los 3 planetas
