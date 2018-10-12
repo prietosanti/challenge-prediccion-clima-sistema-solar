@@ -72,7 +72,7 @@ challenge-prediccion-clima-sistema-solar
 ```
 
 ## Condiciones de Diseño
-Debido a la precisión decimal, por ser un punto flotante, del valor en X e Y que se genera para cada planeta en un día determinado, se redondeó el valor devuelto para que tenga 1 sólo decimal. Por ejemplo, una posición que genere un nuevo punto `P(6.25342, 9.243415)` será  devuelto como `P(6.3, 6.2)`
+Debido a la precisión decimal, por ser un punto flotante, del valor en X e Y que se genera para la posición de cada planeta en un día determinado, el mismo se redondeó para que tenga un sólo decimal. Por ejemplo, una posición que genere un nuevo punto `P(6.25342, 9.243415)` será devuelto como `P(6.3, 6.2)`
 
 La alineación de los planetas se calcula utilizando la ecuación de la recta que pasa por 2 puntos.
 
