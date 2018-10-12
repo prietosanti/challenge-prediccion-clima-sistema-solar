@@ -109,13 +109,15 @@ Cuando el Sol no está contenido dentro del triángulo que forman los 3 planetas
 <img width="425" alt="despejado_nada" src="https://user-images.githubusercontent.com/5465152/46789631-4b86d380-cd13-11e8-9048-c902da5bdd30.png">
 
 ## Correr la Aplicación
-Para correr de forma local se utiliza el plugin Spring Boot de Maven
-`mvn spring-boot:run`
-y se accede mediante `http://localhost:8080`
+### Local
+Para correrlo de forma local se puede:
+- Utilizar el plugin "Spring Boot" de Maven ejecutando `mvn spring-boot:run`
+- Utilizar el plugin "App Engine" de Maven ejecutando `mvn appengine:run` (Es necesario tener instalado el [SDK de Google](https://cloud.google.com/sdk/docs/downloads-interactive))
 
-Para desplegar en Google App Engine
-`mvn appengine:deploy`
-y se accede mediante `https://climaservice-219008.appspot.com`
+Para ambos casos se accede mediante `http://localhost:8080`
+
+### Remoto
+La aplicación se encuentra subida a Google App Engine. Para ello se utilizó el comando `mvn appengine:deploy`. La url para accederla es `https://climaservice-219008.appspot.com`
 
 ## Acceso a los recursos
 ### Informe de cantidad de períodos de cada tipo de clima
