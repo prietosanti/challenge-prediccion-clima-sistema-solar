@@ -39,6 +39,7 @@ challenge-prediccion-clima-sistema-solar
         │   │           ├── model
         │   │           │   ├── ClimaModel.java
         │   │           │   ├── DesplazamientoCiruclar.java
+        │   │           │   ├── InformeModel.java
         │   │           │   ├── ObjetoOrbitable.java
         │   │           │   ├── Planeta.java
         │   │           │   ├── PredictorClimatico.java
