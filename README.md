@@ -100,7 +100,7 @@ Cuando el Sol está contenido dentro del triángulo que forman los 3 planetas y 
 ### Periodo de Lluvia Intensa
 Cuando el Sol está contenido dentro del triángulo que forman los 3 planetas y su perímetro es máximo
 
-<img width="432" alt="lluvia_intensa" src="https://user-images.githubusercontent.com/5465152/46881674-9c392200-ce22-11e8-954e-f00ed3aef1ce.png">
+<img width="432" alt="lluvia_intensa" src="https://user-images.githubusercontent.com/5465152/46881801-efab7000-ce22-11e8-9224-6b016a2ad397.png">
 
 ### Despejado o Nada
 Cuando el Sol no está contenido dentro del triángulo que forman los 3 planetas
