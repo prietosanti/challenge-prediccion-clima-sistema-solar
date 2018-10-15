@@ -68,7 +68,8 @@ challenge-prediccion-clima-sistema-solar
                         └── model
                             ├── CalulosTrigonometricosTest.java
                             ├── PlanetaTest.java
-                            └── PuntoTest.java
+                            ├── PuntoTest.java
+                            └── SistemaSolarTest.java
 ```
 
 ## Condiciones de Diseño
