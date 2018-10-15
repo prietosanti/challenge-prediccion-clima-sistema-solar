@@ -27,7 +27,7 @@ public class SistemaSolar {
     }
 
     public boolean planetasAlineadosConElCentro(int toleranciaDeError) {
-        return CalulosTrigonometricos.rectaResultantePasaPorOrigen(planeta1.posicion(), planeta2.posicion(), toleranciaDeError);
+        return planetasAlineados(toleranciaDeError) && CalulosTrigonometricos.rectaResultantePasaPorOrigen(planeta1.posicion(), planeta2.posicion(), toleranciaDeError);
     }
 
     public boolean solEnElInteriorDelTriangulo() {
@@ -38,4 +38,15 @@ public class SistemaSolar {
         return CalulosTrigonometricos.perimetroTriangulo(planeta1.posicion(), planeta2.posicion(), planeta3.posicion());
     }
 
+    public Planeta getPlaneta1() {
+        return planeta1;
+    }
+
+    public Planeta getPlaneta2() {
+        return planeta2;
+    }
+
+    public Planeta getPlaneta3() {
+        return planeta3;
+    }
 }
