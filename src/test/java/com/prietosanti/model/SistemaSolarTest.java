@@ -25,8 +25,16 @@ public class SistemaSolarTest {
     }
 
     @Test
-    public void planetasNoAlineadosConElCentro() {
-        sistemaSolar.desplazarPlanetas(30);
+    public void planetasAlineadosSinElCentro() {
+        sistemaSolar.desplazarPlanetas(47);
+        assertTrue(sistemaSolar.planetasAlineados(10));
+        assertFalse(sistemaSolar.planetasAlineadosConElCentro(10));
+    }
+
+    @Test
+    public void SolDentroDelTriangulo() {
+        sistemaSolar.desplazarPlanetas(48);
+        assertTrue(sistemaSolar.solEnElInteriorDelTriangulo());
         assertFalse(sistemaSolar.planetasAlineados(10));
         assertFalse(sistemaSolar.planetasAlineadosConElCentro(10));
     }
