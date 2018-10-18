@@ -1,13 +1,10 @@
 package com.prietosanti.model;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class PredictorClimatico {
-
+    
     private static final int DIAS_POR_ANIO = 365;
 
     private final SistemaSolar sistemaSolar;
@@ -28,18 +25,14 @@ public class PredictorClimatico {
         for (int diaActual = 0; diaActual <= totalDias; ++diaActual) {
             sistemaSolar.desplazarPlanetas(diaActual);
 
-            if(sistemaSolar.planetasAlineados(toleranciaDeError)) {
-                if(sistemaSolar.planetasAlineadosConElCentro(toleranciaDeError)) {
-                    climas.add(ClimaModel.of(diaActual, TipoClima.SEQUIA));
-                } else {
-                    climas.add(ClimaModel.of(diaActual, TipoClima.PYT_OPTIMA));
-                }
+            if(sistemaSolar.planetasAlineadosConElCentro(toleranciaDeError)) {
+                climas.add(ClimaModel.of(diaActual, TipoClima.SEQUIA));
+            } else if (sistemaSolar.planetasAlineados(toleranciaDeError)) {
+                climas.add(ClimaModel.of(diaActual, TipoClima.PYT_OPTIMA));
+            } else if (sistemaSolar.solEnElInteriorDelTriangulo()) {
+                predecirTipoDeLluvia(diasDeLLuviaACorregir, diaActual);
             } else {
-                if (sistemaSolar.solEnElInteriorDelTriangulo()) {
-                    predecirTipoDeLluvia(diasDeLLuviaACorregir, diaActual);
-                } else {
-                    climas.add(ClimaModel.of(diaActual, TipoClima.DESPEJADO));
-                }
+                climas.add(ClimaModel.of(diaActual, TipoClima.DESPEJADO));
             }
         }
         corregirDiasDeLluviaIntensa(diasDeLLuviaACorregir);
