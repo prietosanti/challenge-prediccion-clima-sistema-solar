@@ -45,7 +45,7 @@ public class PrediccionClimaticaController {
     }
 
     @GetMapping("/climas/tipos")
-    public ResponseEntity<ArrayList<String>> getClimasPorTipo() {
+    public ResponseEntity<ArrayList<String>> getTiposDeClima() {
         return new ResponseEntity<>(TipoClima.getTiposDeClima(), HttpStatus.OK);
     }
 
