@@ -1,21 +1,24 @@
 package com.prietosanti.model;
 
-import com.prietosanti.configuration.PredictorConfiguration;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { PredictorConfiguration.class })
 public class SistemaSolarTest {
 
-    @Autowired
     private SistemaSolar sistemaSolar;
+
+    @Before
+    public void setup(){
+        sistemaSolar = new SistemaSolar(
+                new Planeta("Ferengis", 500, new DesplazamientoCiruclar(1, DesplazamientoCiruclar.Sentido.HORARIO)),
+                new Planeta("Vulcanos", 1000, new DesplazamientoCiruclar(5, DesplazamientoCiruclar.Sentido.ANTIHORARIO)),
+                new Planeta("Betasoides", 2000, new DesplazamientoCiruclar(3, DesplazamientoCiruclar.Sentido.HORARIO))
+        );
+
+    }
 
     @Test
     public void planetasAlineadosConElCentro() {
